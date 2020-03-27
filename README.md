@@ -8,7 +8,7 @@ It uses the command **[touch](https://linux.die.net/man/1/touch)** to update the
 
 # Installation
 
-Clone this repo or just download the updateme.sh file **inside your container**
+Clone this repo or just download the **updateme.sh** file **inside your container**
 
 ```
 git clone https://github.com/gdi3d/js-hmr-osx-docker-helper
