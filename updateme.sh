@@ -1,7 +1,7 @@
 #/bin/sh
 
 # This file was downloaded from
-# ....
+# https://github.com/gdi3d/js-hmr-osx-docker-helper 
 # check the repo for docs
 
 # <config>
@@ -12,15 +12,17 @@ PATH_TO_WATCH=""
 
 # Available events at https://linux.die.net/man/1/inotifywait
 # on Events section
-EVENTS_TO_LISTEN="create,close_write,delete,modify,moved_from,moved_to"
+# Note: I have experienced some infinet loops if
+# the event close_write was added.
+EVENTS_TO_LISTEN="create,delete,modify,moved_from,moved_to"
 
 # Use regular expressions here to select all files
 # that you want to exclude from beign watch
-FILES_TO_EXCLUDE="(\.git|.log|.md|.lock)"
+FILES_TO_EXCLUDE="(\.git|.log|.md|.lock|.json.gz)"
 
 # Log to terminal the filenames and events
 # to help you debug
-DEBUG=0
+DEBUG=1
 
 # </config>
 
@@ -60,6 +62,10 @@ if [ -z "$PATH_TO_WATCH" ]; then
     echo "Edit this file and add the path to continue.."
     echo
     exit 1;
+fi
+
+if [ $DEBUG -ne 0 ]; then
+    echo "Debug mode enabled. You can turn it of by editing updateme.sh and set DEBUG to 0"
 fi
 
 # Let's keep an eye on those bastards!
