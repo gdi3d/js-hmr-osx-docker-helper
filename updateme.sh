@@ -12,9 +12,11 @@ PATH_TO_WATCH=""
 
 # Available events at https://linux.die.net/man/1/inotifywait
 # on Events section
-# Note: I have experienced some infinet loops if
+# Note: I have experienced some infinite loops if
 # the event close_write was added.
-EVENTS_TO_LISTEN="create,delete,modify,moved_from,moved_to"
+# DO NOT ADD THE DELETE EVENT since it will create
+# an empty file after you delete your own
+EVENTS_TO_LISTEN="create,modify,moved_from,moved_to"
 
 # Use regular expressions here to select all files
 # that you want to exclude from beign watch
